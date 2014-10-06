@@ -36,6 +36,9 @@ class Shader
 {
 public:
 
+	const char *m_vSource;
+	const char *m_fSource;
+
 	std::list<Uniform*> m_uniforms;
 	GameObject *pOwner;
 	unsigned int m_shaderHandle;
@@ -44,7 +47,7 @@ public:
 	{}
 
 	void AddUniform(GLchar *a_name, U_TYPES a_type);
-	void LoadShader(const char *a_vs, const char *a_fs);
+	void LoadShader();
 };
 
 

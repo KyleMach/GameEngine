@@ -40,6 +40,15 @@ void RenderSystem::Init(std::list<GameObject*> a_objList)
 {
 	LoadTexture(a_objList);
 
+	// load shader 
+	for each(GameObject *g in a_objList)
+	{
+		if (g->m_FBXComponent && g->m_FBXComponent->m_pShader)
+		{
+			g->m_FBXComponent->m_pShader->LoadShader();
+		}
+	}
+
 	for each(GameObject *g in a_objList)
 	{
 		if (g && g->m_FBXComponent)

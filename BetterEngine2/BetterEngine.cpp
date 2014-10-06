@@ -21,7 +21,7 @@ BetterEngine::~BetterEngine()
 
 }
 
-void BetterEngine::CreateObject(const char *a_fbxFilePath, const char *a_texFilePath, const char *a_vShaderSource, const char *a_fShaderSource)
+void BetterEngine::CreateObject(const char *a_fbxFilePath, const char *a_texFilePath)
 {
 	GameObject *g;
 	g = new GameObject();
@@ -34,7 +34,11 @@ void BetterEngine::CreateObject(const char *a_fbxFilePath, const char *a_texFile
 
 	g->m_FBXComponent->m_pShader = new Shader(g);
 
-	g->m_FBXComponent->m_pShader->LoadShader(a_vShaderSource, a_fShaderSource);
+	// instead of passing in shader source as parameters 
+	// just hard code them in for each shader like this
+	g->m_FBXComponent->m_pShader->m_vSource = "../bin/shaders/TestShader.vert";
+	g->m_FBXComponent->m_pShader->m_fSource = "../bin/shaders/TestShader.frag";
+	//////////////////////////////////////////////////////////////////////////
 	g->m_FBXComponent->m_pShader->AddUniform("View", emat4);
 	g->m_FBXComponent->m_pShader->AddUniform("Projection", emat4);
 	g->m_FBXComponent->m_pShader->AddUniform("Model", emat4);
@@ -63,8 +67,7 @@ bool BetterEngine::onCreate(int a_argc, char* a_argv[])
 	glEnable(GL_CULL_FACE);
 
 
-	CreateObject("../bin/models/models_misc/soulspear/soulspear.fbx", "../bin/textures/crate.png",
-		"../bin/shaders/TestShader.vert", "../bin/shaders/TestShader.frag");
+	CreateObject("../bin/models/models_misc/soulspear/soulspear.fbx", "../bin/textures/crate.png");
 	//CreateObject
 	rs->Init(gameObjects);
 

@@ -15,6 +15,8 @@ private:
 
 public:
 	
+	Shader *m_shader;
+
 	DirLight(GameObject *DirLight) : Component(DirLight) { }
 	~DirLight() { }
 	

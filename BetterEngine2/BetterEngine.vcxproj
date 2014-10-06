@@ -87,6 +87,7 @@
     <ClInclude Include="DirLight.h" />
     <ClInclude Include="FBXComponent.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ParticleEmitterComponent.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="System.h" />

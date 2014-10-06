@@ -12,8 +12,6 @@ void Shader::AddUniform(GLchar *a_name, U_TYPES a_type)
 {
 	Uniform *uni = new Uniform;
 
-
-
 	uni->m_name = new char[strlen(a_name)+1];
 	strcpy_s(uni->m_name, strlen(a_name)+1, a_name);
 	
@@ -22,15 +20,15 @@ void Shader::AddUniform(GLchar *a_name, U_TYPES a_type)
 	m_uniforms.push_back(uni);
 }
 
-void Shader::LoadShader(const char *a_vs, const char *a_fs)
+void Shader::LoadShader()
 {
 	const char *Inputs[] = { "Position", "Color", "Normal", "Tangent", "BiNormal"
 		"Indices", "Weights", "TexCoord1", "TexCoord2" };
 
 	const char *Outputs[] = { "OutColor" };
 
-	GLuint vShader = Utility::loadShader(a_vs, GL_VERTEX_SHADER);
-	GLuint fShader = Utility::loadShader(a_fs, GL_FRAGMENT_SHADER);
+	GLuint vShader = Utility::loadShader(m_vSource, GL_VERTEX_SHADER);
+	GLuint fShader = Utility::loadShader(m_fSource, GL_FRAGMENT_SHADER);
 
 	m_shaderHandle = Utility::createProgram(vShader, 0, 0, 0, fShader, 8, Inputs, 1, Outputs);
 

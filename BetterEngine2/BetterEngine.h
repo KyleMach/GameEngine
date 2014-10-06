@@ -21,7 +21,7 @@ protected:
 	virtual void onDraw();
 	virtual void onDestroy();
 
-	void CreateObject(const char *a_fbxFilePath, const char *a_texFilePath, const char *a_vShaderSource, const char *a_fShaderSource);
+	void CreateObject(const char *a_fbxFilePath, const char *a_texFilePath);
 
 	RenderSystem *rs = new RenderSystem();
 
